@@ -6,7 +6,7 @@
         <MainSource>Server.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -58,6 +58,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>Server</SanitizedProjectName>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <PostBuildEvent><![CDATA[if exist "$(BDS)\ObjRepos\en\dsrest\dsPostBuild.bat" ( call "$(BDS)\ObjRepos\en\dsrest\dsPostBuild.bat" "$(PROJECTDIR)" "$(OUTPUTDIR)" )
@@ -155,6 +156,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>PngImage_2</ResourceId>
         </RcItem>
+        <None Include="js\jquery-3.3.1.js"/>
+        <None Include="templates\jQueryDataSnap.html"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -177,10 +180,16 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="images\collapse.png" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="js\base64.js" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
-                        <RemoteDir>.\images\</RemoteDir>
-                        <RemoteName>collapse.png</RemoteName>
+                        <RemoteDir>.\js\</RemoteDir>
+                        <RemoteName>base64.js</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="js\jquery-3.3.1.js" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -371,6 +380,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Win64\Release\Server.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>Server.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="js\serverfunctions.js" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win64">
                         <RemoteDir>.\js\</RemoteDir>
@@ -434,6 +449,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="js\jquery-3.3.1.js" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="js\callbackframework-min.js" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win64">
                         <RemoteDir>.\js\</RemoteDir>
@@ -475,6 +496,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Win32\Release\Server.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Server.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="js\json2-min.js" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win64">
                         <RemoteDir>.\js\</RemoteDir>
@@ -498,6 +525,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Win64">
                         <RemoteDir>.\js\</RemoteDir>
                         <RemoteName>json2-min.js</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Untitled1.htm" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -540,6 +573,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Win32">
                         <RemoteDir>.\css\</RemoteDir>
                         <RemoteName>serverfunctioninvoker.css</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="templates\jQueryDataSnap.js" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -635,34 +674,19 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="js\base64.js" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="images\collapse.png" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
-                        <RemoteDir>.\js\</RemoteDir>
-                        <RemoteName>base64.js</RemoteName>
+                        <RemoteDir>.\images\</RemoteDir>
+                        <RemoteName>collapse.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -1013,12 +1037,27 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

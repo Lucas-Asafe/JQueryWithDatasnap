@@ -17,6 +17,11 @@ object WebModule1: TWebModule1
       Name = 'DefaultAction'
       PathInfo = '/'
       OnAction = WebModuleDefaultAction
+    end
+    item
+      Name = 'jQueryDataSnap'
+      PathInfo = '/jQueryDataSnap'
+      Producer = pagejQueryDataSnap
     end>
   BeforeDispatch = WebModuleBeforeDispatch
   Height = 333
@@ -101,5 +106,13 @@ object WebModule1: TWebModule1
     Server = DSServer1
     Left = 208
     Top = 248
+  end
+  object pagejQueryDataSnap: TPageProducer
+    HTMLFile = 
+      'C:\Users\Lucas\Projetos\Delphi\ESTUDO\Aplica'#231#245'es Multicamadas\JQ' +
+      'ueryWithDatasnap\Server\templates\jQueryDataSnap.html'
+    OnHTMLTag = pagejQueryDataSnapHTMLTag
+    Left = 168
+    Top = 136
   end
 end

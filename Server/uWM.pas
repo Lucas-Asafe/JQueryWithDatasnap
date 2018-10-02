@@ -21,6 +21,7 @@ type
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
+    pagejQueryDataSnap: TPageProducer;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
@@ -33,6 +34,8 @@ type
       const AFileName: string; Request: TWebRequest; Response: TWebResponse;
       var Handled: Boolean);
     procedure WebModuleCreate(Sender: TObject);
+    procedure pagejQueryDataSnapHTMLTag(Sender: TObject; Tag: TTag;
+      const TagString: string; TagParams: TStrings; var ReplaceText: string);
   private
     { Private declarations }
     FServerFunctionInvokerAction: TWebActionItem;
@@ -55,6 +58,13 @@ procedure TWebModule1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := uSM.TSM;
+end;
+
+procedure TWebModule1.pagejQueryDataSnapHTMLTag(Sender: TObject; Tag: TTag;
+  const TagString: string; TagParams: TStrings; var ReplaceText: string);
+begin
+  if SameText(TagString, 'EMAIL') then
+    ReplaceText := 'lucasasafe@outlook.com.br';
 end;
 
 procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
