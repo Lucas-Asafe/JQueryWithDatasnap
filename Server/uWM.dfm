@@ -28,17 +28,9 @@ object WebModule1: TWebModule1
   object DSHTTPWebDispatcher1: TDSHTTPWebDispatcher
     Server = DSServer1
     Filters = <>
-    AuthenticationManager = DSAuthenticationManager1
     WebDispatch.PathInfo = 'datasnap*'
     Left = 96
     Top = 75
-  end
-  object DSAuthenticationManager1: TDSAuthenticationManager
-    OnUserAuthenticate = DSAuthenticationManager1UserAuthenticate
-    OnUserAuthorize = DSAuthenticationManager1UserAuthorize
-    Roles = <>
-    Left = 200
-    Top = 139
   end
   object DSServerClass1: TDSServerClass
     OnGetClass = DSServerClass1GetClass
@@ -47,13 +39,13 @@ object WebModule1: TWebModule1
     Top = 11
   end
   object ServerFunctionInvoker: TPageProducer
-    HTMLFile = 'Templates\ServerFunctionInvoker.html'
+    HTMLFile = 'templates/serverfunctioninvoker.html'
     OnHTMLTag = ServerFunctionInvokerHTMLTag
     Left = 56
     Top = 184
   end
   object ReverseString: TPageProducer
-    HTMLFile = 'templates\ReverseString.html'
+    HTMLFile = 'templates/reversestring.html'
     OnHTMLTag = ServerFunctionInvokerHTMLTag
     Left = 168
     Top = 184

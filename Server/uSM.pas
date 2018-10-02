@@ -6,7 +6,7 @@ uses System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth;
 
 type
 {$METHODINFO ON}
-  TServerMethods1 = class(TComponent)
+  TSM = class(TComponent)
   private
     { Private declarations }
   public
@@ -21,12 +21,12 @@ implementation
 
 uses System.StrUtils;
 
-function TServerMethods1.EchoString(Value: string): string;
+function TSM.EchoString(Value: string): string;
 begin
   Result := Value;
 end;
 
-function TServerMethods1.ReverseString(Value: string): string;
+function TSM.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
 end;

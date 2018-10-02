@@ -1,7 +1,7 @@
-object frmMain: TfrmMain
+object Form1: TForm1
   Left = 271
   Top = 114
-  Caption = 'Running...'
+  Caption = 'Form1'
   ClientHeight = 235
   ClientWidth = 399
   Color = clBtnFace
@@ -45,7 +45,7 @@ object frmMain: TfrmMain
     Width = 121
     Height = 21
     TabOrder = 2
-    Text = '8080'
+    Text = '211'
   end
   object ButtonOpenBrowser: TButton
     Left = 24
