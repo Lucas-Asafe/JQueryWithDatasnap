@@ -13,6 +13,7 @@ type
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
+    function Somar(a, b: Integer): Integer;
   end;
 {$METHODINFO OFF}
 
@@ -30,5 +31,11 @@ function TSM.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
 end;
+
+function TSM.Somar(a, b: Integer): Integer;
+begin
+  Result := a + b;
+end;
+
 end.
 

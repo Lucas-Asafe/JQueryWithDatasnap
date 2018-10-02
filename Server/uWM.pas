@@ -64,7 +64,17 @@ procedure TWebModule1.pagejQueryDataSnapHTMLTag(Sender: TObject; Tag: TTag;
   const TagString: string; TagParams: TStrings; var ReplaceText: string);
 begin
   if SameText(TagString, 'EMAIL') then
-    ReplaceText := 'lucasasafe@outlook.com.br';
+    ReplaceText := 'lucasasafe@outlook.com.br'
+  else if SameText(TagString, 'urlpath') then
+    ReplaceText := string(Request.InternalScriptName)
+  else if SameText(TagString, 'port') then
+    ReplaceText := IntToStr(Request.ServerPort)
+  else if SameText(TagString, 'host') then
+    ReplaceText := string(Request.Host)
+  else if SameText(TagString, 'classname') then
+    ReplaceText := uSM.TSM.ClassName
+  else if SameText(TagString, 'serverfunctionsjs') then
+    ReplaceText := string(Request.InternalScriptName) + '/js/serverfunctions.js';
 end;
 
 procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;

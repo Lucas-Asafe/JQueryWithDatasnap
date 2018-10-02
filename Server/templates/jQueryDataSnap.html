@@ -1,32 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 
 <head>
   <title>DataSnap REST Project</title>
   <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="js/base64.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/serverfunctionexecutor.js"></script>
+  <script type="text/javascript" src="js/connection.js"></script>
+  <script type="text/javascript" src="<#serverfunctionsjs>"></script>
+  <script type="text/javascript" src="js/ServerFunctionInvoker.js"></script>
   <script>
-    $(document).ready(function () {
-      $('#btSomar').click(
-        function () {
+    function onLoad()
+    {
+      setConnection('<#host>', '<#port>', '<#urlpath>');
+    }
+
+    function serverMethods()
+    {
+      return new <#classname>(connectionInfo);
+    }
+
+    $(document).ready(function () 
+    {
+
+      $('#btSomarClient').click(
+        function () 
+        {
           $('#rValue').val(
             parseFloat($('#xValue').val()) +
             parseFloat($('#yValue').val())
           );
         }
       );
-    }
-    );
+
+      $('#btSomarServer').click(
+        function()
+        {
+          soma = serverMethods().Somar(
+            $('#aValue').val(), 
+            $('#bValue').val()
+          );
+          $('#cValue').val(soma.result);
+        }
+      );
+    });
   </script>
 </head>
 
 <body>
-  <h1>DataSnap e JQuery
-  </h1>
-  <h2>Email: <#email>
-
-  </h2>
-  <h3>Calculado jQuery
-  </h3>
+  <h1>DataSnap e JQuery</h1>
+  <h2>Email: <#email></h2>
+  <h3>Calculado jQuery (client)</h3>
   <div>
     <table cellspacing="1" cellpadding="1">
       <tr>
@@ -36,10 +61,23 @@
         <td>
           <input id="rValue"></td>
         <td>
-          <input id="btSomar" type="button" value="Somar"></td>
+          <input id="btSomarClient" type="button" value="Somar"></td>
       </tr>
     </table>
-
+  </div>
+  <h3>Calculado jQuery (server)</h3>
+  <div>
+    <table cellspacing="1" cellpadding="1">
+      <tr>
+        <td><input id="aValue"></td>
+        <td>
+          <input id="bValue"></td>
+        <td>
+          <input id="cValue"></td>
+        <td>
+          <input id="btSomarServer" type="button" value="Somar"></td>
+      </tr>
+    </table>
   </div>
 </body>
 
